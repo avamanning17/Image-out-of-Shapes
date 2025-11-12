@@ -11,9 +11,10 @@ namespace Image_out_of_Shapes
 
         SpriteFont textFont;
         Rectangle hotPinkRectangle;
-        Rectangle purpleRectangle;
+        Rectangle leg1Rectangle, leg2Rectangle, leg3Rectangle, leg4Rectangle;
         Rectangle purpleCircle;
-        Rectangle triangle;
+        Rectangle eye1, eye2, eye1Dot, eye2Dot;
+        Rectangle ear1, ear2, nose;
 
         Rectangle window;
 
@@ -39,10 +40,20 @@ namespace Image_out_of_Shapes
             _graphics.ApplyChanges();
 
             // x y, width, height
-            purpleRectangle = new Rectangle(0, 0, 0, 0);
+            leg1Rectangle = new Rectangle(275, 300, 20, 75);
+            leg2Rectangle = new Rectangle(305, 300, 20, 75);
+            leg3Rectangle = new Rectangle(475, 300, 20, 75);
+            leg4Rectangle = new Rectangle(505, 300, 20, 75);
             hotPinkRectangle = new Rectangle(275, 200, 250, 100);
-            triangle = new Rectangle();
             purpleCircle = new Rectangle(455, 125, 120, 120);
+            eye1 = new Rectangle(470, 160, 35, 35 );
+            eye2 = new Rectangle(515, 160, 35, 35);
+            eye1Dot = new Rectangle(486, 176, 10, 10);
+            eye2Dot = new Rectangle();
+            ear1 = new Rectangle(); 
+            ear2 = new Rectangle();
+            nose = new Rectangle();
+            
 
             base.Initialize();
         }
@@ -55,9 +66,17 @@ namespace Image_out_of_Shapes
 
             pinkRectangleTexture = Content.Load<Texture2D>("hotPinkRectangle");
             triangleTexture = Content.Load<Texture2D>("triangle");
+            triangleTexture = Content.Load<Texture2D>("triangle");
+            triangleTexture = Content.Load<Texture2D>("triangle");
+            circleTexture = Content.Load<Texture2D>("purpleCircle");
+            circleTexture = Content.Load<Texture2D>("purpleCircle");
             circleTexture = Content.Load<Texture2D>("purpleCircle");
             purpleRectangleTexture = Content.Load<Texture2D>("purpleRectangle");
-            
+            purpleRectangleTexture = Content.Load<Texture2D>("purpleRectangle");
+            purpleRectangleTexture = Content.Load<Texture2D>("purpleRectangle");
+            purpleRectangleTexture = Content.Load<Texture2D>("purpleRectangle");
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -80,9 +99,20 @@ namespace Image_out_of_Shapes
 
 
             _spriteBatch.Draw(pinkRectangleTexture, hotPinkRectangle, Color.White);
-            _spriteBatch.Draw(triangleTexture, triangle, Color.White);
-            _spriteBatch.Draw(purpleRectangleTexture, purpleRectangle, Color.White);
             _spriteBatch.Draw(circleTexture, purpleCircle, Color.White);
+            _spriteBatch.Draw(circleTexture, eye1, Color.LightGray);
+            _spriteBatch.Draw(circleTexture, eye2, Color.LightGray);
+            _spriteBatch.Draw(circleTexture, eye1Dot, Color.Black);
+            _spriteBatch.Draw(circleTexture, eye2Dot, Color.Black);
+            _spriteBatch.Draw(triangleTexture, ear1, Color.HotPink);
+            _spriteBatch.Draw(triangleTexture, ear2, Color.HotPink);
+            _spriteBatch.Draw(triangleTexture, nose, Color.HotPink);
+            _spriteBatch.Draw(purpleRectangleTexture, leg1Rectangle, Color.White);
+            _spriteBatch.Draw(purpleRectangleTexture, leg2Rectangle, Color.White);
+            _spriteBatch.Draw(purpleRectangleTexture, leg3Rectangle, Color.White);
+            _spriteBatch.Draw(purpleRectangleTexture, leg4Rectangle, Color.White);
+
+            
             
 
             _spriteBatch.End();
