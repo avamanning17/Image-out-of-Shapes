@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Data.Common;
 
 namespace Image_out_of_Shapes
 {
@@ -8,6 +9,8 @@ namespace Image_out_of_Shapes
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        
 
         SpriteFont textFont;
         Rectangle hotPinkRectangle;
@@ -18,11 +21,15 @@ namespace Image_out_of_Shapes
 
         Rectangle window;
 
+        SpriteFont titlefont;
+
         Texture2D Texture;
         Texture2D triangleTexture;
         Texture2D pinkRectangleTexture;
         Texture2D circleTexture;
         Texture2D purpleRectangleTexture;
+
+        MouseState mouseState;
 
         public Game1()
         {
@@ -48,11 +55,11 @@ namespace Image_out_of_Shapes
             purpleCircle = new Rectangle(455, 125, 120, 120);
             eye1 = new Rectangle(470, 160, 35, 35 );
             eye2 = new Rectangle(515, 160, 35, 35);
-            eye1Dot = new Rectangle(486, 176, 10, 10);
-            eye2Dot = new Rectangle();
-            ear1 = new Rectangle(); 
-            ear2 = new Rectangle();
-            nose = new Rectangle();
+            eye1Dot = new Rectangle(486, 180, 10, 10);
+            eye2Dot = new Rectangle(530, 180, 10, 10);
+            ear1 = new Rectangle(465, 110, 40, 40); 
+            ear2 = new Rectangle(520, 110, 40, 40);
+            nose = new Rectangle(500, 200, 25, 25);
             
 
             base.Initialize();
@@ -75,6 +82,7 @@ namespace Image_out_of_Shapes
             purpleRectangleTexture = Content.Load<Texture2D>("purpleRectangle");
             purpleRectangleTexture = Content.Load<Texture2D>("purpleRectangle");
             purpleRectangleTexture = Content.Load<Texture2D>("purpleRectangle");
+            titlefont = Content.Load<SpriteFont>("TextFont");
 
 
         }
@@ -83,7 +91,9 @@ namespace Image_out_of_Shapes
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            mouseState = Mouse.GetState();
 
+            this.Window.Title=mouseState.Position.ToString();
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -112,8 +122,10 @@ namespace Image_out_of_Shapes
             _spriteBatch.Draw(purpleRectangleTexture, leg3Rectangle, Color.White);
             _spriteBatch.Draw(purpleRectangleTexture, leg4Rectangle, Color.White);
 
-            
-            
+            _spriteBatch.DrawString(titlefont, "Im a Cat!", new Vector2(350, 400), Color.White);
+
+
+
 
             _spriteBatch.End();
 
